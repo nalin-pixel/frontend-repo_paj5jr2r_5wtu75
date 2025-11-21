@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 
 export default function Hero() {
+  const fallbackImg = 'https://placehold.co/1200x900/ffe4e6/7f1d1d?text=momtobe'
+
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-rose-50 to-pink-50" />
@@ -32,7 +34,13 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative"
         >
-          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop" alt="momtobe" className="rounded-3xl shadow-2xl object-cover aspect-[4/3] w-full" />
+          <img
+            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop"
+            alt="momtobe"
+            className="rounded-3xl shadow-2xl object-cover aspect-[4/3] w-full"
+            referrerPolicy="no-referrer"
+            onError={(e) => { e.currentTarget.src = fallbackImg }}
+          />
         </motion.div>
       </div>
     </section>

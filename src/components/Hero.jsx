@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion'
 
+const API_BASE = import.meta.env.VITE_BACKEND_URL || ''
+const proxy = (url) => url ? `${API_BASE}/api/proxy-image?url=${encodeURIComponent(url)}` : ''
+
 export default function Hero() {
+  const original = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop'
   const fallbackImg = 'https://placehold.co/1200x900/ffe4e6/7f1d1d?text=momtobe'
 
   return (
@@ -35,7 +39,7 @@ export default function Hero() {
           className="relative"
         >
           <img
-            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop"
+            src={proxy(original)}
             alt="momtobe"
             className="rounded-3xl shadow-2xl object-cover aspect-[4/3] w-full"
             referrerPolicy="no-referrer"
